@@ -6,7 +6,6 @@ data/*
 !data/.htaccess
 !data/.version
 workspace/*
-plugins/*
 public/*.min.*
 
 *.disabled*

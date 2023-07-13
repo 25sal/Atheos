@@ -12,6 +12,8 @@
 
 class ContextMenu {
 
+	private $exam = True;
+
 	//////////////////////////////////////////////////////////////////////////80
 	// Default File Manager Menu Map
 	//////////////////////////////////////////////////////////////////////////80
@@ -23,23 +25,28 @@ class ContextMenu {
 			"title" => "fileNew",
 			"icon" => "fas fa-plus-circle",
 			"type" => "folder",
-			"action" => "atheos.filemanager.createFile"
+			"action" => "atheos.filemanager.createFile",
+			"exam"  => False
+		
 		],
 		[
 			"title" => "folderNew",
 			"icon" => "fas fa-folder",
 			"type" => "folder",
-			"action" => "atheos.filemanager.createFolder"
+			"action" => "atheos.filemanager.createFolder",
+			"exam"  => False
 		],
 		[
 			"title" => "filesUpload",
 			"icon" => "fas fa-upload",
 			"type" => "folder",
-			"action" => "atheos.transfer.openUpload"
+			"action" => "atheos.transfer.openUpload",
+			"exam"  => False
 		],
 		[
 			"title" => "hr-directory",
 			"type" => "folder",
+			"exam"  => False
 		],
 		//////////////////////////////////////////////////////////////////////80
 		// Generic Actions
@@ -52,36 +59,41 @@ class ContextMenu {
 		[
 			"title" => "copy",
 			"icon" => "fas fa-copy",
-			"action" => "atheos.filemanager.copy"
+			"action" => "atheos.filemanager.copy",
+			"exam"  => false
 		],
 		[
 			"title" => "paste",
 			"icon" => "fas fa-paste",
 			"type" => "folder",
-			"action" => "atheos.filemanager.paste"
+			"action" => "atheos.filemanager.paste",
+			"exam"  => false
 		],
 		[
 			"title" => "duplicate",
 			"icon" => "fas fa-clone",
-			"action" => "atheos.filemanager.openDuplicate"
+			"action" => "atheos.filemanager.openDuplicate",
+			"exam"  => False
 		],
 		[
 			"title" => "download",
 			"icon" => "fas fa-download",
-			"action" => "atheos.transfer.download"
+			"action" => "atheos.transfer.download",
+			"exam"  => False
 		],
 		[
 			"title" => "extract",
 			"icon" => "fas fa-file-export",
 			"type" => "file",
 			"fTypes" => ["zip", "tar", "tar.gz"],
-			"action" => "atheos.filemanager.extract"
+			"action" => "atheos.filemanager.extract",
+			"exam"  => False
 		],
 		[
 			"title" => "preview",
 			"icon" => "fas fa-eye",
 			"type" => "file",
-			"fTypes" => ["php", "html"],
+			"fTypes" => ["html"],
 			"action" => "atheos.filemanager.openInBrowser"
 		],
 		// [
@@ -97,18 +109,21 @@ class ContextMenu {
 		[
 			"title" => "hr-noRoot",
 			"noRoot" => true,
+			"exam"  => false,
 		],
 		[
 			"title" => "rename",
 			"icon" => "fas fa-pencil-alt",
 			"noRoot" => true,
-			"action" => "atheos.filemanager.openRename"
+			"action" => "atheos.filemanager.openRename",
+			"exam"  => false
 		],
 		[
 			"title" => "delete",
 			"icon" => "fas fa-trash-alt",
 			"noRoot" => true,
-			"action" => "atheos.filemanager.delete"
+			"action" => "atheos.filemanager.delete",
+			"exam"  => false
 		],
 		//////////////////////////////////////////////////////////////////////80
 		// Folder Actions
@@ -116,6 +131,7 @@ class ContextMenu {
 		[
 			"title" => "hr-folder",
 			"type" => "folder",
+			
 		],
 		[
 			"title" => "rescan",
@@ -129,26 +145,30 @@ class ContextMenu {
 		[
 			"title" => "hr-git-folder",
 			"type" => "folder",
+			"exam"  => false,
 		],
 		[
 			"title" => "codegit_open",
 			"icon" => "fas fa-code-branch",
 			"type" => "folder",
 			"isRepo" => true,
-			"action" => "atheos.codegit.showCodeGit"
+			"action" => "atheos.codegit.showCodeGit",
+			"exam"  => False
 		],
 		[
 			"title" => "git_init",
 			"icon" => "fas fa-code-branch",
 			"type" => "folder",
 			"isRepo" => false,
-			"action" => "atheos.codegit.gitInit"
+			"action" => "atheos.codegit.gitInit",
+			"exam"  => false,
 		],
 		[
 			"title" => "git_clone",
 			"icon" => "fas fa-code-branch",
 			"type" => "folder",
-			"action" => "atheos.codegit.gitClone"
+			"action" => "atheos.codegit.gitClone",
+			"exam"  => false
 		],
 		//////////////////////////////////////////////////////////////////////80
 		// Git File Actions
@@ -156,28 +176,32 @@ class ContextMenu {
 		[
 			"title" => "hr-git-file",
 			"type" => "file",
-			"inRepo" => true
+			"inRepo" => true,
+			"exam"  => false,
 		],
 		[
 			"title" => "git_diff",
 			"icon" => "fas fa-code-branch",
 			"type" => "file",
 			"inRepo" => true,
-			"action" => "atheos.codegit.diff"
+			"action" => "atheos.codegit.diff",
+			"exam"  => false
 		],
 		[
 			"title" => "git_blame",
 			"icon" => "fas fa-code-branch",
 			"type" => "file",
 			"inRepo" => true,
-			"action" => "atheos.codegit.blame"
+			"action" => "atheos.codegit.blame",
+			"exam"  => False
 		],
 		[
 			"title" => "git_log",
 			"icon" => "fas fa-code-branch",
 			"type" => "file",
 			"inRepo" => true,
-			"action" => "atheos.codegit.log"
+			"action" => "atheos.codegit.log",
+			"exam"  => false
 		]
 	);
 
@@ -192,6 +216,7 @@ class ContextMenu {
 		foreach ($this->fileMenu as $item) {
 			if (isset($item["title"])) $item["title"] = i18n($item["title"]);
 			if (isset($item["admin"]) && $item["admin"] && !Common::checkAccess("configure")) continue;
+			if (isset($item["exam"]) &&  $this->exam) continue;
 
 			$temp[] = $item;
 		}
