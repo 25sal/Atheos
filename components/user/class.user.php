@@ -68,7 +68,7 @@ class User {
 	public function buildSession($user, $username, $language) {
 		SESSION("user", $username);
 		SESSION("lang", $language);
-
+		$_SESSION['elpro_user'] = $user;
 		if (isset($user["activePath"]) && $user["activePath"] !== "" && isset($user["activeName"]) && $user["activeName"] !== "") {
 			SESSION("projectPath", $user["activePath"]);
 			SESSION("projectName", $user["activeName"]);

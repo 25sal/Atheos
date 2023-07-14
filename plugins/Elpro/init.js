@@ -29,16 +29,9 @@
 		init: function() {
 			if (self) return;
 			self = this;
-
-			// Start your plugin here...
-		},
-
-		//////////////////////////////////////////////////////////////////////80
-		// SOME_METHOD: Opens an alert message in the browser
-		//////////////////////////////////////////////////////////////////////80
-		test: function() {
+			console.log('Elpro plugin loaded!');
 			echo({
-				url: atheos.controller,
+				url: 'plugins/Elpro/controller.php',
 				data: {
 					target: 'Elpro',
 					action: 'test',
@@ -55,6 +48,13 @@
 
 				}
 			});
+		},
+
+		//////////////////////////////////////////////////////////////////////80
+		// SOME_METHOD: Opens an alert message in the browser
+		//////////////////////////////////////////////////////////////////////80
+		test: function() {
+
 		}
 	};
 

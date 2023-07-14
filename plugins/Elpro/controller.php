@@ -11,12 +11,19 @@
 //////////////////////////////////////////////////////////////////////////////80
 
 require_once "class.elpro.php";
-
+require_once "../../common.php";
+session_name('MY_SESSION_NAME');
+session_start();
 $activeUser = SESSION("user");
+echo $activeUser;
 $Collab = new Elpro($activeUser);
 
 Common::send("notice", "Template controller is an example only");
 
+
+
+// Chiudi la richiesta
+curl_close($request);
 //////////////////////////////////////////////////////////////////////////////80
 // Get Action
 //////////////////////////////////////////////////////////////////////////////80

@@ -25,7 +25,7 @@
 			if (self.loginForm.exists()) {
 				fX('#login').on('submit', function(e) {
 					e.preventDefault();
-
+					console.log("ok");
 					if (oX('#remember').prop('checked')) {
 						// Save Username
 						storage('username', oX('#username').value());
