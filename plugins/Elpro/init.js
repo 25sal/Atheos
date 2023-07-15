@@ -16,7 +16,7 @@
 //  - desc: A short description of use
 //
 //////////////////////////////////////////////////////////////////////////////80
-
+var token = null;
 (function() {
 
 	let self = false;
@@ -30,31 +30,56 @@
 			if (self) return;
 			self = this;
 			console.log('Elpro plugin loaded!');
-			echo({
-				url: 'plugins/Elpro/controller.php',
-				data: {
-					target: 'Elpro',
-					action: 'test',
-					projectName: "token"
-				},
-				settled: function(status, reply) {
-					atheos.toast.show(reply);
-					if (status === 'error') return;
+			if(token == null){
+				echo({
+					url: 'plugins/Elpro/controller.php',
+					data: {
+						target: 'Elpro',
+						action: 'login'
+					},
+					settled: function(status, reply) {
+						atheos.toast.show(reply);
+						if (status === 'error') return;
+						if (reply == 'invalid_token')
+						{
+							carbon.publish('evaluate.invalid_token', reply.path);
+						}
+						token = reply;
+						
+						/* Notify listeners. */
+						//carbon.publish('project.open', reply.path);
+						console.log(token);
+						var formData = {token:token,username:'salvatore'}; //Array 
+ 
+						var xhttp = new XMLHttpRequest();
+						xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							console.log(this.responseText);
+							if(this.responseText=="authenticated")
+							  carbon.publish('evaluate.authenticated', reply.path); 
+							else if(this.responseText=="authentication_error")
+							  carbon.publish('evaluate.authentication_error', reply.path);
 
-					
-					/* Notify listeners. */
-					//carbon.publish('project.open', reply.path);
-					alert("ok");
+							
+						}
+						};
+						xhttp.withCredentials = true;
+						xhttp.open("POST", "http://localhost:5000/auth_token", true);
+						xhttp.send();
 
-				}
+					}
+
 			});
+		  }
 		},
 
 		//////////////////////////////////////////////////////////////////////80
 		// SOME_METHOD: Opens an alert message in the browser
 		//////////////////////////////////////////////////////////////////////80
 		test: function() {
+			
 
+			
 		}
 	};
 

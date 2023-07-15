@@ -27,6 +27,7 @@ class Elpro {
 	// Construct
 	//////////////////////////////////////////////////////////////////////////80
 	public function __construct($activeUser) {
+		/*
 		$this->activeUser = $activeUser;
 		// Imposta i parametri della richiesta
 		$user_id = $activeUser;
@@ -64,7 +65,7 @@ class Elpro {
 
 		}
 
-
+    */
 
 	}
 
