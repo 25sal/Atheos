@@ -1,0 +1,40 @@
+<?php
+
+//////////////////////////////////////////////////////////////////////////////80
+// Template Dialog
+//////////////////////////////////////////////////////////////////////////////80
+// Copyright (c) Atheos & Liam Siira (Atheos.io), distributed as-is and without
+// warranty under the MIT License. See [root]/LICENSE.md for more.
+// This information must remain intact.
+//////////////////////////////////////////////////////////////////////////////80
+// Authors: Atheos Team, @hlsiira
+//////////////////////////////////////////////////////////////////////////////80
+
+
+switch ($action) {
+	case "openDialog":
+		?>
+		<label class="title"><i class="fas fa-cog"></i><?php echo "Traccia" ?></label>
+		<div id="Traccia">
+			<?php
+			// index.php
+			include 'traccia_2018_01_24_a.html';
+			// your other code
+			?>
+		<div>
+		<?php
+		break;
+
+
+
+	case "test":
+		Common::send("success", "Test required.");
+
+        break;
+	//////////////////////////////////////////////////////////////////////////80
+	// Default: Invalid Action
+	//////////////////////////////////////////////////////////////////////////80
+	default:
+		Common::send("error", "Invalid action.");
+		break;
+}

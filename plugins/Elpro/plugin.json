@@ -1,0 +1,35 @@
+{
+	"author": ["HLSiira"],
+	"name": "Elpro",
+	"description": "A plugin for exercise testing",
+	"category": "Common",
+	"status": "available",
+	"version": "v1.0.0",
+	"url": "https://github.com/Atheos/Plugin-Template",
+	"rightbar": [{
+		"action": "atheos.elpro.build();",
+		"icon": "icon-info-circled",
+		"title": "Build"
+	},
+	{
+		"action": "atheos.elpro.test();",
+		"icon": "icon-info-circled",
+		"title": "Test"
+	},	{
+		"action": "atheos.elpro.getTraccia();",
+		"icon": "icon-info-circled",
+		"title": "Traccia"
+	}
+],
+	"contextmenu": [{
+		"action": "atheos.MY_PLUGIN.SOME_METHOD();",
+		"icon": "icon-info-circled",
+		"applies-to": "both",
+		"title": "This will be displayed in the contextmenu"
+	}],
+	"config": [{
+		"file": "dialog.php",
+		"icon": "icon-info-circled",
+		"title": "Config Settings"
+	  }]
+}
