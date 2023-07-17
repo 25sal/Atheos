@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 6.3.5.2 (Linux)"/>
+	<meta name="created" content="2017-05-17T12:50:36.656668283"/>
+	<meta name="changed" content="2020-04-25T02:04:27.244812646"/>
+	<style type="text/css">
+		@page { size: 8.27in 11.69in; margin: 0.79in }
+		p { margin-bottom: 0.1in; background: transparent; line-height: 120%; background: transparent }
+		h2 { margin-top: 0.14in; margin-bottom: 0.08in; background: transparent; page-break-after: avoid }
+		h2.western { font-family: "Liberation Serif", serif; font-size: 18pt; font-weight: bold }
+		h2.cjk { font-family: "Noto Serif CJK SC"; font-size: 18pt; font-weight: bold }
+		h2.ctl { font-family: "Lohit Devanagari"; font-size: 18pt; font-weight: bold }
+		a:link { color: #000080; so-language: zxx; text-decoration: underline }
+		a:visited { color: #800000; so-language: zxx; text-decoration: underline }
+	</style>
+</head>
+<body lang="it-IT" link="#000080" vlink="#800000" dir="ltr"><h2 class="western" align="center">
+Traccia di Elementi di Programmazione</h2>
+<p align="center" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p align="left" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0in; line-height: 100%">Sviluppare in
+linguaggio C un programma che:</p>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<ul>
+	<li><p style="margin-bottom: 0in; line-height: 100%">legge una
+	stringa da un file di testo “input.txt”. 
+	</p>
+	<li><p style="margin-bottom: 0in; line-height: 100%">salva in un
+	secondo vettore di caratteri le lettere presenti nella stringa prese
+	una sola voltaa</p>
+	<li><p style="margin-bottom: 0in; line-height: 100%">per ogni
+	lettera del secondo vettore crea una struttura i cui campi sono:la
+	lettera, la sua frequenza di occorrenza nella stringa, il vettore
+	delle posizioni, il numero di occorrenze</p>
+	<p style="margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 100%">
+	<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff"><font color="#0000ff">struct</font>
+	Mystruct</span></font></font></font></p>
+</ul>
+<p style="margin-left: 0.49in; margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 0.2in">
+<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff">{</span></font></font></font></p>
+<p style="margin-left: 0.49in; margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 0.2in">
+<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff"><font color="#0000ff">	</font><font color="#0000ff">char</font>
+lettera;</span></font></font></font></p>
+<p style="margin-left: 0.49in; margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 0.2in">
+<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff"><font color="#0000ff">	float</font>
+frequenzaOccorrenza; </span></font></font></font>
+</p>
+<p style="margin-left: 0.49in; margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 0.2in">
+<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff"><font color="#0000ff">	int</font>
+numeroOccorrenze;</span></font></font></font></p>
+<p style="margin-left: 0.49in; margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 0.2in">
+<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff"><font color="#0000ff">	int</font>
+posizioniLettera[<font color="#098658">100</font>];</span></font></font></font></p>
+<p style="margin-left: 0.49in; margin-bottom: 0in; background: transparent; font-weight: normal; line-height: 0.2in">
+<font color="#000000"><font face="Droid Sans Mono, monospace, monospace, Droid Sans Fallback"><font size="2" style="font-size: 10pt"><span style="background: #ffffff">};</span></font></font></font></p>
+<ul>
+	<p style="margin-bottom: 0in; line-height: 100%"></p>
+</ul>
+<ul>
+	<li><p style="margin-bottom: 0in; line-height: 100%">il vettore
+	salva I SOLI ELEMENTI del vettore delle strutture <i><b>ordinato</b></i>
+	in senso decrescente del numero di occorrenze in un file binario
+	“output.bin”;</p>
+</ul>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0in; line-height: 100%"><b>Esempio</b>:</p>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p>Stringa iniziale: “casa sacca”</p>
+<p>Vettore di strutture:</p>
+<p>‘<span lang="it-IT">a’, 4, 0.4, [1,3,6,9]</span></p>
+<p align="justify" style="margin-left: 0.49in">‘c’, 3,
+0.3,[0,7,8]</p>
+<p align="justify" style="margin-left: 0.49in">‘s’,2, 0.2, [2,5]</p>
+<p align="justify" style="margin-left: 0.49in">‘ ’,1, 0.1, [4]</p>
+<p align="left" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p align="left" style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+</body>
+</html>
