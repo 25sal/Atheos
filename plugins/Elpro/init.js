@@ -35,12 +35,17 @@ var token = null;
 			if (self) return;
 			self = this;
 			console.log('Elpro plugin loaded!');
-
+			
+			$('#fm_toggle_hidden').attr("onclick", "atheos.demo.denied();");
 			
 			ul_checks = '<table style="text-align:center;"><tbody><tr><td>build</td><td>exec</td><td>outfile</td><td>test</td></tr>';
 			ul_checks += '<tr><td><i class="fas fa-archive"></i></td><td><i class=\"fas fa-archive\"></i></td><td><i class=\"fas fa-archive\"></i></td><td><i class=\"fas fa-archive\"></i></td></tr></tbody></table>';
             out_wind = '<div id="evaluate_out"><div class="title"><h2>Test Output</h2> <i id="test-collapse" class="fas fa-chevron-circle-down"></i></div><div class="content">'+ul_checks+'</div>';
 			$('#SBRIGHT').append(out_wind);
+
+
+			//$('#root-editor-wrapper').after('<div id="evaluate_log"><div class="title"><h2>Test Output</h2> <i id="test-collapse" class="fas fa-chevron-circle-down"></i></div><div class="content">'+ul_checks+'</div>')
+
 			fX('#test-collapse').on('click', function() {
 				if (self.sideExpanded) {
 					self.dock.collapse();

@@ -12,7 +12,7 @@
 		"title": "Build"
 	},
 	{
-		"action": "atheos.elpro.tet();",
+		"action": "atheos.elpro.test();",
 		"icon": "icon-info-circled",
 		"title": "Test"
 	}],
