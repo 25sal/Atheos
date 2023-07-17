@@ -25,11 +25,35 @@ var token = null;
 	carbon.subscribe('system.loadExtra', () => atheos.elpro.init());
 
 	atheos.elpro = {
+		sideExpanded: true,
 
 		init: function() {
+
+
+
+
 			if (self) return;
 			self = this;
 			console.log('Elpro plugin loaded!');
+
+			
+
+            out_wind = '<div id="evaluate_out"><div class="title"><h2>Test Output</h2> <i id="test-collapse" class="fas fa-chevron-circle-down"></i></div><div class="content">prova</div>';
+			$('#SBRIGHT').append(out_wind);
+			fX('#test-collapse').on('click', function() {
+				if (self.sideExpanded) {
+					self.dock.collapse();
+					//atheos.settings.save('project.dockOpen', false, true);
+					//storage('project.dockOpen', false);
+				} else {
+					self.dock.expand();
+					//atheos.settings.save('project.dockOpen', true, true);
+					//storage('project.dockOpen', true);
+				}
+			});
+
+
+
 			if(token == null){
 				echo({
 					url: 'plugins/Elpro/controller.php',
@@ -73,14 +97,83 @@ var token = null;
 		  }
 		},
 
+
+		dock: {
+			load: function() {
+				
+							self.dock.collapse();
+				
+			},
+
+			expand: function() {
+				self.sideExpanded = true;
+				oX('#SBRIGHT #evaluate_out').css('height', '');
+				oX('#SBRIGHT>.content').css('bottom', '');
+
+				oX('#test-collapse').replaceClass('fa-chevron-circle-up', 'fa-chevron-circle-down');
+
+
+
+			},
+
+			collapse: function() {
+				self.sideExpanded = false;
+				var height = oX('#SBRIGHT #evaluate_out .title').height();
+
+				oX('#SBRIGHT #evaluate_out').css('height', height + 'px');
+				oX('#SBRIGHT>.content').css('bottom', height + 'px');
+
+				oX('#test-collapse').replaceClass('fa-chevron-circle-down', 'fa-chevron-circle-up');
+			}
+		},
+
 		//////////////////////////////////////////////////////////////////////80
-		// SOME_METHOD: Opens an alert message in the browser
+		// BUILD_METHOD: build main.c file
 		//////////////////////////////////////////////////////////////////////80
-		test: function() {
+		build: function() {
+			
+			var formData = {token:token,username:'demo'}; //Array 
+ 
+						var xhttp = new XMLHttpRequest();
+						xhttp.onreadystatechange = function() {
+						if (this.readyState == 4 && this.status == 200) {
+							console.log(this.responseText);
+							
+
+							
+						}
+						};
+						xhttp.withCredentials = true;
+						xhttp.open("POST", "http://localhost:5000/build", true);
+						xhttp.send();
+
+				
+			},
+		
+			//////////////////////////////////////////////////////////////////////80
+			// TEST_METHOD: build and test main.c file
+			//////////////////////////////////////////////////////////////////////80
+			test: function() {
+			
+				
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(this.responseText);
+					
+
+					
+				}
+				};
+				xhttp.withCredentials = true;
+				xhttp.open("POST", "http://localhost:5000/test", true);
+				xhttp.send();
+	
+					
+				},
 			
 
 			
-		}
 	};
 
 })();
