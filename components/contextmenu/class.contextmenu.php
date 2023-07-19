@@ -94,7 +94,7 @@ class ContextMenu {
 			"icon" => "fas fa-eye",
 			"type" => "file",
 			"fTypes" => ["html"],
-			"action" => "atheos.filemanager.openInBrowser"
+			"action" => "atheos.filemanager.openInModal"
 		],
 		// [
 		// 	"title" => "preview",

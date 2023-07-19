@@ -99,12 +99,12 @@
 		//////////////////////////////////////////////////////////////////////80
 		// Open a preview in a modal iFrame
 		//////////////////////////////////////////////////////////////////////80
-		// openInModal: function(path) {
-		// 	atheos.modal.load(250, {
-		// 		action: 'preview',
-		// 		path: path
-		// 	});
-		// },
+		openInModal: function(path) {
+		 	atheos.modal.load(250, {
+		 		action: 'preview',
+		 		path: path
+		 	});
+		 },
 
 		//////////////////////////////////////////////////////////////////////80
 		// Listen for click events on nodes
