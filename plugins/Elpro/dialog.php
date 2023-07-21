@@ -10,12 +10,26 @@
 // Authors: Atheos Team, @hlsiira
 //////////////////////////////////////////////////////////////////////////////80
 
-echo "<div>Built done</div>";
 
 switch ($action) {
+	case "openDialog":
+		?>
+		<label class="title"><i class="fas fa-cog"></i><?php echo "Traccia" ?></label>
+		<div id="Traccia">
+			<?php
+			// index.php
+			include 'traccia_2018_01_24_a.html';
+			// your other code
+			?>
+		<div>
+		<?php
+		break;
+
+
 
 	case "test":
 		Common::send("success", "Test required.");
+
         break;
 	//////////////////////////////////////////////////////////////////////////80
 	// Default: Invalid Action

@@ -15,7 +15,12 @@
 		"action": "atheos.elpro.test();",
 		"icon": "icon-info-circled",
 		"title": "Test"
-	}],
+	},	{
+		"action": "atheos.elpro.getTraccia();",
+		"icon": "icon-info-circled",
+		"title": "Traccia"
+	}
+],
 	"contextmenu": [{
 		"action": "atheos.MY_PLUGIN.SOME_METHOD();",
 		"icon": "icon-info-circled",
