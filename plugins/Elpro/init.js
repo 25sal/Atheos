@@ -16,7 +16,72 @@
 //  - desc: A short description of use
 //
 //////////////////////////////////////////////////////////////////////////////80
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var token = null;
+
+
+
+function html_logs(output){
+
+no_of_warnings =0;
+html_string="";
+output.split(/\r?\n|\r/).forEach((line) => {
+  let str = line;
+
+  if (str.toLowerCase().includes('warning:')) {
+    html_string +='<span style="color: black; background-color: yellow;">' + str + '</span>';
+    html_string +='<br>'; // Empty line
+    no_of_warnings++;
+  } else if (str.toLowerCase().includes('in function')) {
+    html_string +='<br>';
+    html_string +='<strong>' + str + '</strong>';
+  } else if (str.toLowerCase().includes('error:')) {
+    html_string +='<span style="background-color: red; color: white;">' + '-'.repeat(str.length) + '</span>';
+    html_string +='<span style="background-color: red; color: white;">' + str + '</span>';
+    html_string +='<span style="background-color: red; color: white;">' + '-'.repeat(str.length) + '</span>';
+    no_of_errors++;
+  } else if (str.includes(' Error ')) {
+    html_string +='<span style="background-color: red; color: white;">' + '-'.repeat(str.length) + '</span>';
+    html_string +='<span style="background-color: red; color: white;">' + str + '</span>';
+    html_string +='<span style="background-color: red; color: white;">' + '-'.repeat(str.length) + '</span>';
+    no_of_errors++;
+  } else {
+    html_string +='<span style="color: green;">' + str + '</span>';
+  }
+});
+
+
+
+return html_string;
+}
+
+
+
+
+
+
+
+
+
+
 (function() {
 
 	let self = false;
@@ -35,6 +100,7 @@ var token = null;
 			ul_checks += '<tr><td><i class="fas fa-archive"></i></td><td><i class=\"fas fa-archive\"></i></td><td><i class=\"fas fa-archive\"></i></td><td><i class=\"fas fa-archive\"></i></td></tr></tbody></table>';
             out_wind = '<div id="evaluate_out"><div class="title"><h2>Test Output</h2> <i id="test-collapse" class="fas fa-chevron-circle-down"></i></div><div class="content">'+ul_checks+'</div>';
 			$('#SBRIGHT').append(out_wind);
+			$('#SBRIGHT').after('<div id="evaluate_log" style="width: 100%;height: 25px;z-index: 99999;margin: 0;padding: 0;background: var(--mideground);cursor: row-resize;">|||</div>');
 			fX('#test-collapse').on('click', function() {
 				if (self.sideExpanded) {
 					self.dock.collapse();
@@ -69,11 +135,11 @@ var token = null;
 		  }
 
 				var formData = {
-					user_id: 'test123@test123.it',
+					user_id: 'demo',
 					secret: "my-secret"
 				};
 				
-				fetch("http://checkhost.local:8025/auth_token", {
+				fetch("http://localhost:5000/auth_token", {
 					method: "POST",
 					headers: {
 					"Content-Type": "application/json"
@@ -88,6 +154,7 @@ var token = null;
 				})
 				.then(data => {
 					console.log(data);
+					token = data["access_token"];
 					if (data === "authenticated") {
 					carbon.publish('evaluate.authenticated', reply.path);
 					} else if (data === "authentication_error") {
@@ -121,20 +188,22 @@ var token = null;
 		// BUILD_METHOD: build main.c file
 		//////////////////////////////////////////////////////////////////////80
 		build: function() {
-			
+		        console.log("*************"+token);	
 			var formData = {token:token,username:'demo'}; //Array 
  
 						var xhttp = new XMLHttpRequest();
 						xhttp.onreadystatechange = function() {
 						if (this.readyState == 4 && this.status == 200) {
-							console.log(this.responseText);
-							
+							console.log(html_logs(this.responseText));
+						$('#evaluate_out').append(html_logs(this.responseText));	
 
 							
 						}
 						};
-						xhttp.withCredentials = true;
-						xhttp.open("POST", "http://localhost:8025/build", true);
+						//xhttp.withCredentials = true;
+						xhttp.open("POST", "http://localhost:5000/build", true);
+						 xhttp.setRequestHeader('Authorization',"JWT "+token);
+
 						xhttp.send();
 
 				
@@ -165,7 +234,7 @@ var token = null;
 			// TEST_METHOD: open the file with the exam description
 			//////////////////////////////////////////////////////////////////////80
 			getTraccia: function() {
-				const url = 'http://localhost:8025/exercise'; // L'URL dell'API
+				const url = 'http://localhost:5000/exercise'; // L'URL dell'API
 
 				fetch(url)
 				  .then(response => {
